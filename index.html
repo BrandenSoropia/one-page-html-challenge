@@ -32,6 +32,10 @@
       margin: 0;
     }
 
+    input::placeholder {
+      font-size: inherit;
+    }
+
     .modal {
       background-color: rgba(59, 52, 52, 0.5);
       left: 0;
@@ -48,10 +52,10 @@
       border-radius: 5px;
       display: flex;
       flex-direction: column;
-      height: 40rem;
       margin: 10% auto;
+      padding: 1.6rem;
       text-align: center;
-      width: 25rem;
+      width: 20rem;
     }
 
     .modal.sign-up .content h3 {
@@ -59,9 +63,53 @@
     }
 
     .modal.sign-up .content > form {
+      align-items: center;
       display: flex;
       flex-direction: column;
-      padding: 2.4rem;
+      justify-content: space-between;
+      margin: 1.6rem 0;
+      width: 100%;
+    }
+
+    .modal.sign-up .content > form > input {
+      height: 1.6rem;
+      font-size: 1.2rem;
+      width: 75%;
+    }
+
+    .modal.sign-up .content > form > input {
+      height: 1.6rem;
+      font-size: 1.2rem;
+      width: 75%;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal.sign-up .content > form > button {
+      width: 50%;
+    }
+
+    .sso {
+      display: flex;
+      flex-direction: column;
+      height: 6rem;
+      justify-content: space-between;
+      margin-top: 1.6rem;
+      width: 100%;
+    }
+
+    .sso > button {
+      border-radius: 0;
+      color: white;
+      font-size: 1.6rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .sso > button.facebook {
+      background-color: #4267b2;
+    }
+
+    .sso > button.google {
+      background-color: rgb(66, 133, 244);
     }
   </style>
 </head>
@@ -75,24 +123,29 @@
       <div class="modal sign-up">
         <div class="content">
           <h3>Welcome to Binterest</h3>
-          <p>Find new ideas to try</p>
-          <form id="sign-up">
+          <p>Find all the ideas to try</p>
+          <form id="sign-up" onsubmit="return mockSignUp();">
             <input id="email" type="email" placeholder="Email" />
             <input id="password" type="password" placeholder="password" />
             <input id="age" type="number" placeholder="Age" />
+            <button type="submit">Continue</button>
           </form>
           <p>or</p>
-          <button class="sign-in facebook" onclick="mockFacebook">
-            Continue with Facebook
-          </button>
-          <button class="sign-in google" onclick="mockGoogle">
-            Continue with Google
-          </button>
+          <!-- Potential reusable component -->
+          <div class="sso">
+            <button class="facebook" onclick="mockSignUp();">
+              Continue with Facebook
+            </button>
+            <button class="google" onclick="mockSignUp();">
+              Continue with Google
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </body>
   <script>
+    // Game internals
     let startTime = null;
     let endTime = null;
 
@@ -128,6 +181,17 @@
     function displayTime() {
       toggleGameDisplay();
       alert(((endTime - startTime) / 1000).toFixed(2));
+    }
+
+    // TODO: cheat detection. Generate a list of ads in a specific order. Ads must be closed in that order, one at time.
+
+    // Ad generating functions
+
+    // Mock ad interactions
+    function mockSignUp(event) {
+      alert("No, don't give in!");
+
+      return false;
     }
   </script>
 </html>
