@@ -109,13 +109,15 @@
       endTime = Date.now();
     }
 
+    function toggleGameDisplay() {
+      document.getElementById("start-screen").classList.toggle("hidden");
+      document.getElementById("game").classList.toggle("hidden");
+    }
+
     function startGame() {
       clearTimes(); // Make sure times are reset
       setStartTime();
-      // TODO: hide start screen
-
-      document.getElementById("start-screen").classList.add("hidden");
-      document.getElementById("game").classList.remove("hidden");
+      toggleGameDisplay();
     }
 
     function endGame() {
@@ -124,7 +126,8 @@
     }
 
     function displayTime() {
-      console.log(((endTime - startTime) / 1000).toFixed(2));
+      toggleGameDisplay();
+      alert(((endTime - startTime) / 1000).toFixed(2));
     }
   </script>
 </html>
