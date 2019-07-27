@@ -1,12 +1,117 @@
 <!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>Ad Slasher</title>
+  <meta name="author" content="Branden Soropia" />
+  <meta
+    name="description"
+    content="Hone ad evading skills and cut through their ranks to access your content."
+  />
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      background-color: bisque;
+      font-size: 62.5%;
+    }
+
+    .game {
+      position: relative;
+    }
+
+    h3 {
+      font-size: 3.2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .modal {
+      background-color: rgba(59, 52, 52, 0.5);
+      position: absolute;
+    }
+
+    .modal.sign-up .content {
+      background: white;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 25%;
+      width: 42rem;
+    }
+
+    .modal.sign-up .content h3 {
+      margin: 0;
+    }
+
+    .modal.sign-up .content > form {
+      display: flex;
+      flex-direction: column;
+      padding: 2.4rem;
+    }
+  </style>
+</head>
 <html>
   <body>
-    <h1>My First Heading</h1>
-    <p>My first paragraph.</p>
+    <div class="game">
+      <button onclick="startGame();">Start</button>
+      <button onclick="endGame();">Done!</button>
+      <div class="modal sign-up">
+        <div class="content">
+          <h3>Welcome to Binterest</h3>
+          <p>Find new ideas to try</p>
+          <form id="sign-up">
+            <input id="email" type="email" placeholder="Email" />
+            <input id="password" type="password" placeholder="password" />
+            <input id="age" type="number" placeholder="Age" />
+          </form>
+          <p>or</p>
+          <button class="sign-in facebook" onclick="mockFacebook">
+            Continue with Facebook
+          </button>
+          <button class="sign-in google" onclick="mockGoogle">
+            Continue with Google
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
   <script>
-    window.onload = function() {
-      console.log("Hello! I'm ready!");
-    };
+    let startTime = null;
+    let endTime = null;
+
+    function clearTimes() {
+      startTime = null;
+      endTime = null;
+    }
+
+    function setStartTime() {
+      startTime = Date.now();
+    }
+
+    function setEndTime() {
+      endTime = Date.now();
+    }
+
+    function startGame() {
+      clearTimes(); // Make sure times are reset
+      setStartTime();
+      // TODO: hide start screen
+    }
+
+    function endGame() {
+      setEndTime();
+      displayTime();
+    }
+
+    function displayTime() {
+      console.log(((endTime - startTime) / 1000).toFixed(2));
+    }
   </script>
 </html>
