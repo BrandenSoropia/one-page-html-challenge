@@ -20,7 +20,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     h3 {
@@ -207,7 +207,9 @@
 
     function displayTime() {
       toggleGameDisplay();
-      alert(((endTime - startTime) / 1000).toFixed(2));
+      alert(
+        `You finished in ${((endTime - startTime) / 1000).toFixed(2)} seconds!`
+      );
     }
 
     // TODO: cheat detection. Generate a list of ads in a specific order. Ads must be closed in that order, one at time.
